@@ -1,10 +1,44 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import Dashboard from './pages/dashboard.js'
+import Users from './pages/users.tsx'
+import Locations from './pages/locations.tsx'
+import {createBrowserRouter, RouterProvider} from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Dashboard />,
+    errorElement: <div>404 Not Found</div>,
+    children: [
+      {
+        path: "users/",
+        element: <Users />,
+      },
+      {
+        path: "users/:userId/",
+        element: <Users />,
+      },
+      {
+        path: "locations/",
+        element: <Locations />,
+      },
+      {
+        path: "locations/:locationId/",
+        element: <Locations />,
+      },
+    ],
+  },
+  {
+    path: "/users",
+    element: <Users />,
+    errorElement: <div>404 Not Found</div>,
+  }
+]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <RouterProvider router={router} />
+  </React.StrictMode>
 )
