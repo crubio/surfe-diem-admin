@@ -2,7 +2,7 @@ import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { useLocation } from 'react-router-dom'
 
 
-function makeBreadCrumbs() {
+function MakeBreadCrumbs() {
   const path = useLocation().pathname
   const parts = path.split('/').filter((part) => part !== '')
 
@@ -35,4 +35,4 @@ function makeBreadCrumbs() {
   )
 }
 
-export default makeBreadCrumbs
+export default MakeBreadCrumbs

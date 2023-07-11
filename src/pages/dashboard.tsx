@@ -1,14 +1,14 @@
 import { Outlet } from 'react-router';
 import SiteHeader from '@features/ui/header';
 import Container from 'react-bootstrap/esm/Container';
-import makeBreadCrumbs from '@features/ui/breadcrumbs';
+import MakeBreadCrumbs from '@features/ui/breadcrumbs';
 
 function Dashboard(): JSX.Element {
     return (
       <>
         <SiteHeader />
         <Container>
-          {makeBreadCrumbs()}
+          {MakeBreadCrumbs()}
           <Outlet />
         </Container>
       </>

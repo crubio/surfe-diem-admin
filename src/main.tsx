@@ -21,6 +21,10 @@ const router = createBrowserRouter([
         element: <Users />,
       },
       {
+        path: "users/:userId/edit",
+        element: <Users />,
+      },
+      {
         path: "locations/",
         element: <Locations />,
       },
@@ -31,8 +35,13 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/users",
-    element: <Users />,
+    path: "/login",
+    element: <div>Login</div>,
+    errorElement: <div>404 Not Found</div>,
+  },
+  {
+    path: "/logout",
+    element: <div>Logout</div>,
     errorElement: <div>404 Not Found</div>,
   }
 ]);
