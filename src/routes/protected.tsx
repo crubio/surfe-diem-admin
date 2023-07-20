@@ -4,6 +4,7 @@ import Locations from "pages/locations";
 import Users from "pages/users";
 import { Container } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
+import NotFoundCard from "@features/ui/cards/not-found";
 
 const App = () => {
   return (
@@ -30,7 +31,8 @@ export const protectedRoutes = [
       {
         path: "locations/",
         element: <Locations />,
+        errorEleeent: <NotFoundCard />,
       },
     ],
-  },
+  }
 ];

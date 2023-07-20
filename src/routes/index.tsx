@@ -1,21 +1,22 @@
+import { useContext } from 'react';
 import { useRoutes } from 'react-router-dom';
-
-// import { Landing } from '@/features/misc';
-// import { useAuth } from '@/lib/auth';
-
 import { protectedRoutes } from './protected';
 import { publicRoutes } from './public';
+import { AuthContext } from 'providers/auth';
+import { matchAll } from './match-all';
+import Dashboard from 'pages/dashboard';
 
+/**
+ * Returns routes based on user authentication status
+ * @returns ReactELement
+ */
 export const AppRoutes = () => {
-  // TODO: Uncomment this when auth is implemented
-  // const auth = useAuth();
-  const auth = true;
-
-  const commonRoutes = [{ path: '/', element: <div>root</div>}];
+  const {user} = useContext(AuthContext);
+  const commonRoutes = [{ path: '/', element: <Dashboard />}];
   
-  const routes = auth ? protectedRoutes : publicRoutes;
+  const routes = user ? protectedRoutes : publicRoutes;
 
-  const element = useRoutes([...commonRoutes, ...routes]);
+  const element = useRoutes([...commonRoutes, ...routes, ...matchAll]);
 
   return (element)
 };

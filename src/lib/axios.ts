@@ -1,10 +1,12 @@
 import Axios, { AxiosRequestConfig } from 'axios';
 import { API_URL } from '../config';
-import storage from '../utils/storage';
+import {useLocalStorage, PREFIX} from '../utils/storage';
 
-function authRequestInterceptor(config: AxiosRequestConfig): any {
+const authRequestInterceptor = (config: AxiosRequestConfig): any => {
   config.headers = config.headers ?? {};
-  const token = storage.getToken();
+  const {getItem} = useLocalStorage();
+
+  const token = getItem(`${PREFIX}token`);
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
