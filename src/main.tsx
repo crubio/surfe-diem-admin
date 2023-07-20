@@ -1,44 +1,29 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Dashboard from './pages/dashboard.js'
-import Users from './pages/users.tsx'
-import Locations from './pages/locations.tsx'
-import {createBrowserRouter, RouterProvider} from 'react-router-dom'
+import {BrowserRouter} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { AppProvider } from 'providers/app.tsx'
+import { AppRoutes } from 'routes/index.tsx'
+import {
+  QueryClient,
+  QueryClientProvider
+} from '@tanstack/react-query'
+const queryClient = new QueryClient();
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Dashboard />,
-    errorElement: <div>404 Not Found</div>,
-    children: [
-      {
-        path: "users/",
-        element: <Users />,
-      },
-      {
-        path: "users/:userId/",
-        element: <Users />,
-      },
-      {
-        path: "locations/",
-        element: <Locations />,
-      },
-      {
-        path: "locations/:locationId/",
-        element: <Locations />,
-      },
-    ],
-  },
-  {
-    path: "/users",
-    element: <Users />,
-    errorElement: <div>404 Not Found</div>,
-  }
-]);
+// import { Auth } from '@lib/auth' for test login
+// auth.login({
+//   username: 'hashbrown@gmail.com',
+//   password: 'wow',
+// })
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <AppProvider>
+        <BrowserRouter>
+          <AppRoutes />
+        </BrowserRouter>
+      </AppProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 )

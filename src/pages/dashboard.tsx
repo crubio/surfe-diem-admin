@@ -1,18 +1,15 @@
-import { Outlet } from 'react-router';
-import SiteHeader from '@features/ui/header';
-import Container from 'react-bootstrap/esm/Container';
-import makeBreadCrumbs from '@features/ui/breadcrumbs';
+import SiteHeader from "@features/ui/header"
+import { Container } from "react-bootstrap"
 
-function Dashboard(): JSX.Element {
-    return (
-      <>
-        <SiteHeader />
-        <Container>
-          {makeBreadCrumbs()}
-          <Outlet />
-        </Container>
-      </>
-    )
+const Dashboard = () => {
+  return (
+    <>
+      <SiteHeader />
+      <Container>
+        <p>This is the dashboard page</p>
+      </Container>
+    </>
+  )
 }
 
-export default Dashboard;
+export default Dashboard

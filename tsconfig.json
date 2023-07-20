@@ -7,9 +7,11 @@
     "skipLibCheck": true,
     "allowJs": true,
     "checkJs": false,
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "paths":{
-      "@features/*": ["src/features/*"],
+      "@features/*": ["features/*"],
+      "@utils/*": ["utils/*"],
+      "@lib/*": ["lib/*"]
     },
 
     /* Bundler mode */
