@@ -1,24 +1,25 @@
-import {loginWithEmailAndPassword, getUser, LoginCredentialsDTO, LoginResponse, AuthUser} from '@features/auth'
-import {useLocalStorage, PREFIX} from '@utils/storage'
+import {loginWithEmailAndPassword, LoginCredentialsDTO, LoginResponse} from '@features/auth'
+import {UseLocalStorage, PREFIX} from '@utils/storage'
 
-async function handleUserResponse(data: LoginResponse): Promise<AuthUser> {
+async function handleUserResponse(data: LoginResponse) {
   const { access_token } = data;
-  const {setItem} = useLocalStorage();
-  setItem(`${PREFIX}token`, access_token);
-  const user = await getUser();
-  return user
+  const {setItem} = UseLocalStorage();
+  if (data) {
+    setItem(`${PREFIX}token`, access_token);
+  }
+  return
 }
 
 async function logoutFn(): Promise<void> {
-  const {removeItem} = useLocalStorage();
+  const {removeItem} = UseLocalStorage();
   removeItem(`${PREFIX}token`);
   window.location.assign(window.location.origin as unknown as string);
 }
 
-async function loginFn(data: LoginCredentialsDTO): Promise<AuthUser> {
+async function loginFn(data: LoginCredentialsDTO): Promise<LoginResponse> {
   const response = await loginWithEmailAndPassword(data);
-  const user = await handleUserResponse(response)
-  return user
+  await handleUserResponse(response)
+  return response
 }
 
 const auth = {

@@ -1,17 +1,17 @@
-import Axios, { AxiosRequestConfig } from 'axios';
+import Axios, { AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios';
 import { API_URL } from '../config';
-import {useLocalStorage, PREFIX} from '../utils/storage';
+import {UseLocalStorage, PREFIX} from '../utils/storage';
 
-const authRequestInterceptor = (config: AxiosRequestConfig): any => {
+const authRequestInterceptor = (config: AxiosRequestConfig): InternalAxiosRequestConfig => {
   config.headers = config.headers ?? {};
-  const {getItem} = useLocalStorage();
+  const {getItem} = UseLocalStorage();
 
   const token = getItem(`${PREFIX}token`);
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
   config.headers.Accept = 'application/json';
-  return config;
+  return config as InternalAxiosRequestConfig;
 }
 
 export const axios = Axios.create({

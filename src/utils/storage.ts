@@ -16,7 +16,7 @@ export const PREFIX = 'surfe_diem_';
 // export default storage;
 
 // Hook way, fine too.
-export const useLocalStorage = () => {
+export const UseLocalStorage = () => {
 
   const setItem = (key: string, value: string) => {
     localStorage.setItem(key, value);

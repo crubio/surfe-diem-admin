@@ -11,5 +11,5 @@ export const loginWithEmailAndPassword = (data: LoginCredentialsDTO): Promise<Lo
   const formData = new FormData();
   formData.append("username", data.username);
   formData.append("password", data.password);
-  return axios.post('/login', formData);
+  return axios.post('/login', formData, {headers: {'Content-Type': 'multipart/form-data'}});
 };

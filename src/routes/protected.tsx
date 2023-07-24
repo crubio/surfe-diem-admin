@@ -1,27 +1,13 @@
-import MakeBreadCrumbs from "@features/ui/breadcrumbs";
-import SiteHeader from "@features/ui/header";
 import Locations from "pages/locations";
 import Users from "pages/users";
-import { Container } from "react-bootstrap";
-import { Outlet } from "react-router-dom";
 import NotFoundCard from "@features/ui/cards/not-found";
-
-const App = () => {
-  return (
-    <>
-      <SiteHeader />
-      <Container>
-        {MakeBreadCrumbs()}
-        <Outlet />
-      </Container>
-    </>
-  )
-}
+import ProtectedApp from "@features/auth/routes/protected";
+import { Login } from "@features/auth/routes/login";
 
 export const protectedRoutes = [
   {
     path: "/",
-    element: <App />,
+    element: <ProtectedApp />,
     errorElement: <div>404 Not Found</div>,
     children: [
       {
@@ -32,6 +18,11 @@ export const protectedRoutes = [
         path: "locations/",
         element: <Locations />,
         errorEleeent: <NotFoundCard />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
+        ErrorElement: <div>404 Not Found</div>,
       },
     ],
   }
