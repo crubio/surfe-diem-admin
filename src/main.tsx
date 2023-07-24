@@ -10,7 +10,7 @@ import {
 } from '@tanstack/react-query'
 const queryClient = new QueryClient();
 
-// import { Auth } from '@lib/auth' for test login
+// import auth from '@lib/auth'
 // auth.login({
 //   username: 'hashbrown@gmail.com',
 //   password: 'wow',

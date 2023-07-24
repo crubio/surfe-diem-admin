@@ -1,8 +1,8 @@
 import React from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import {} from '@lib/auth'
 import { AuthContext } from './auth';
 import { useUser } from 'hooks/use-user';
+import Spinner from 'react-bootstrap/Spinner';
 
 type AppProviderProps = {
   children: React.ReactNode;
@@ -15,7 +15,7 @@ const ErrorFallback = () => {
 }
 
 export const AppProvider = ({ children }: AppProviderProps) => {
-  const {data} = useUser();
+  const {data, isLoading, isFetched} = useUser();
   const userData = data ? data : null;
 
   return(
@@ -24,11 +24,19 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         <div>rendered by react suspense component</div>
       }
     >
-      <AuthContext.Provider value={{user: userData, setUser: () => {}}}>
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
-          {children}
-        </ErrorBoundary>
-      </AuthContext.Provider>
+      {isLoading && !isFetched ? (
+        <div>
+          <Spinner animation="grow" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        </div>
+      ) : (
+        <AuthContext.Provider value={{user: userData}}>
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            {children}
+          </ErrorBoundary>
+        </AuthContext.Provider> 
+      )}
     </React.Suspense>
   )
 }
