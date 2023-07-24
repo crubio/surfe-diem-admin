@@ -3,6 +3,8 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { AuthContext } from './auth';
 import { useUser } from 'hooks/use-user';
 import Spinner from 'react-bootstrap/Spinner';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 type AppProviderProps = {
   children: React.ReactNode;
@@ -32,6 +34,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         </div>
       ) : (
         <AuthContext.Provider value={{user: userData}}>
+          <ToastContainer />
           <ErrorBoundary FallbackComponent={ErrorFallback}>
             {children}
           </ErrorBoundary>

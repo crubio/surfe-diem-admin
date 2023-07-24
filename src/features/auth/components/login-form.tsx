@@ -1,6 +1,7 @@
 import auth from '@lib/auth'
 import { useState } from 'react';
 import { Button, Form } from "react-bootstrap";
+import { toast } from 'react-toastify';
 
 interface LoginFormProps {
   onSuccess: () => void;
@@ -9,24 +10,26 @@ interface LoginFormProps {
 export const LoginForm = (props: LoginFormProps) => {
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   function handleSubmit (event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setLoading(true);
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
-      console.log('form not valid')
       event.stopPropagation();
     }
-    console.log(username, password)
     auth.login({
       username: username,
       password: password,
     }).then(() => {
       props.onSuccess();
-    }).catch((error) => {
-      console.log('login error:', error)
-      // TODO: toast style notification should be dispatched here
-    })
+    }).catch(() => {
+      setLoading(false);
+      toast.error("Invalid username or password");
+    }).finally(() => {
+      setLoading(false);
+    });
   }
 
   return (
@@ -52,7 +55,7 @@ export const LoginForm = (props: LoginFormProps) => {
           onChange={e => setPassword(e.target.value)}
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" disabled={loading}>
         Login
       </Button>
     </Form>
