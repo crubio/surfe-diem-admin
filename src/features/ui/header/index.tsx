@@ -15,6 +15,7 @@ function SiteHeader() {
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
                   <Nav.Link href={APP_ROUTES.LOCATIONS}>Locations</Nav.Link>
+                  <Nav.Link href={APP_ROUTES.SUMMARIES}>Wave Summaries</Nav.Link>
                   <Nav.Link href={APP_ROUTES.USERS}>Users</Nav.Link>
                 </Nav>
               </Navbar.Collapse>
