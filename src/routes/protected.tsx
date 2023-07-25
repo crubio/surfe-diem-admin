@@ -1,4 +1,4 @@
-import Locations from "pages/locations";
+import LocationsPage from "pages/locations";
 import Users from "pages/users";
 import NotFoundCard from "@features/ui/cards/not-found";
 import ProtectedApp from "@features/auth/routes/protected";
@@ -16,7 +16,7 @@ export const protectedRoutes = [
       },
       {
         path: "locations/",
-        element: <Locations />,
+        element: <LocationsPage />,
         errorEleeent: <NotFoundCard />,
       },
       {

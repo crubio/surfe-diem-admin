@@ -13,4 +13,6 @@ export const APP_ROUTES = {
 export const API_ROUTES = {
   LOGIN: "/login",
   GET_USER: "/users/me",
+  LOCATIONS: "/api/v1/locations",
+  USERS: "/api/v1/users",
 }
