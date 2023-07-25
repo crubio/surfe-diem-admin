@@ -12,7 +12,7 @@ const Dashboard = () => {
       <Container>
         <p>This is the dashboard page</p>
         { user && <p>Welcome {user.email}</p> }
-        { !user && (
+        { !user && userRequest.isFetched && (
           <>
             <p>You are not logged in</p>
             <p>Please <a href="/login">login</a></p>
