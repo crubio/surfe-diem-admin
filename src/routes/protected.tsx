@@ -3,6 +3,7 @@ import Users from "pages/users";
 import NotFoundCard from "@features/ui/cards/not-found";
 import ProtectedApp from "@features/auth/routes/protected";
 import { Login } from "@features/auth/routes/login";
+import SummariesPage from "pages/summary";
 
 export const protectedRoutes = [
   {
@@ -17,6 +18,11 @@ export const protectedRoutes = [
       {
         path: "locations/",
         element: <LocationsPage />,
+        errorEleeent: <NotFoundCard />,
+      },
+      {
+        path: "summaries/",
+        element: <SummariesPage />,
         errorEleeent: <NotFoundCard />,
       },
       {
