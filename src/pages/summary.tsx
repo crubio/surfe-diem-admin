@@ -37,7 +37,7 @@ function SummariesPage() {
       <h1>Wave Summaries</h1>
       <p>Showing the last 50 summaries from "/api/v1/locations/summary". If there are none, check the daily_summaries cron job.</p>
       <p>For more information on the data, see <a href="https://www.ndbc.noaa.gov/measdes.shtml" target="_blank">NOAA's National Data Buoy Center</a>.</p>
-      {data?.length ? 
+      {data?.length && !isError ? 
         (
           <Table striped bordered hover>
             <thead>
