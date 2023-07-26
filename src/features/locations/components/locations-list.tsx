@@ -17,7 +17,7 @@ export const LocationsList = (props: Props) => {
               <Accordion.Item eventKey={location.location_id}>
                 <Accordion.Header><h2 className="fs-6">{location.name}</h2></Accordion.Header>
                 <Accordion.Body>
-                  <p><span className="fw-bold">id</span>: {location.id}</p>
+                  <p><span className="fw-bold">id</span>: {location.location_id}</p>
                   <p><span className="fw-bold">database id</span>: {location.id}</p>
                   <p><span className="fw-bold">description</span>: {location.description}</p>
                   <p><span className="fw-bold">location</span>: {location.location}</p>
