@@ -4,6 +4,8 @@ import NotFoundCard from "@features/ui/cards/not-found";
 import ProtectedApp from "@features/auth/routes/protected";
 import { Login } from "@features/auth/routes/login";
 import SummariesPage from "pages/summary";
+import HomePage from "pages/home";
+import Dashboard from "pages/dashboard";
 
 export const protectedRoutes = [
   {
@@ -11,6 +13,14 @@ export const protectedRoutes = [
     element: <ProtectedApp />,
     errorElement: <div>404 Not Found</div>,
     children: [
+      {
+        path: "",
+        element: <HomePage />,
+      },
+      {
+        path: "dashboard/",
+        element: <Dashboard />,
+      },
       {
         path: "users/",
         element: <Users />,
