@@ -1,5 +1,5 @@
-import {axios} from '@lib/axios';
-import {API_ROUTES} from 'utils/routing'
+import { axios } from '@lib/axios';
+import { API_ROUTES } from 'utils/routing'
 import { Summary } from '../types';
 
 export const getSummaries = (): Promise<Summary[]> => {

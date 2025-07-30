@@ -1,5 +1,5 @@
-import {axios} from '@lib/axios';
-import {API_ROUTES} from 'utils/routing'
+import { axios } from '@lib/axios';
+import { API_ROUTES } from 'utils/routing'
 import { Location } from '@features/locations/types';
 
 export const getLocations = (): Promise<Location[]> => {

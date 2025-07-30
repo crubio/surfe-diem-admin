@@ -1,30 +1,34 @@
 
 import { useNavigate } from 'react-router-dom';
 import { LoginForm } from '../components/login-form';
-import { useUser } from 'hooks/use-user';
-import { useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { Card } from 'react-bootstrap';
 
 export const Login = () => {
   const navigate = useNavigate();
+  
   const notify = () => toast('Login successful!');
-  const userRequest = useUser();
-  const user = userRequest.data || null;
 
-  useEffect(() => {
-    if (user) {
-      navigate('/');
-    }
-  }, [user, navigate])
-
-  function onSuccess () {
+  function onSuccess() {
     notify();
     navigate('/');
   }
 
   return (
-    <div title="Log in to your account">
-      <LoginForm onSuccess={onSuccess} />
+    <div className="py-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6 col-lg-4">
+          <Card>
+            <Card.Body>
+              <Card.Title className="text-center mb-4">
+                <i className="bi bi-person-circle me-2"></i>
+                Sign In
+              </Card.Title>
+              <LoginForm onSuccess={onSuccess} />
+            </Card.Body>
+          </Card>
+        </div>
+      </div>
     </div>
   );
 };

@@ -12,13 +12,16 @@ export const LoginForm = (props: LoginFormProps) => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  function handleSubmit (event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setLoading(true);
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.stopPropagation();
+      setLoading(false);
+      return;
     }
+    
     auth.login({
       username: username,
       password: password,
@@ -33,8 +36,8 @@ export const LoginForm = (props: LoginFormProps) => {
   }
 
   return (
-    <Form className="container mt-3 mb-3" onSubmit={handleSubmit}>
-      <Form.Group className="mb-3 col-lg-6 col-sm-12" controlId="formBasicEmail">
+    <Form onSubmit={handleSubmit}>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control
           required
@@ -45,7 +48,7 @@ export const LoginForm = (props: LoginFormProps) => {
         />
       </Form.Group>
 
-      <Form.Group className="mb-3 col-lg-6 col-sm-12" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
         <Form.Control
           required
@@ -55,8 +58,21 @@ export const LoginForm = (props: LoginFormProps) => {
           onChange={e => setPassword(e.target.value)}
         />
       </Form.Group>
-      <Button variant="primary" type="submit" disabled={loading}>
-        Login
+      
+      <Button 
+        variant="primary" 
+        type="submit" 
+        disabled={loading}
+        className="w-100"
+      >
+        {loading ? (
+          <>
+            <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            Signing in...
+          </>
+        ) : (
+          'Sign In'
+        )}
       </Button>
     </Form>
   )

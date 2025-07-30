@@ -1,10 +1,15 @@
 import { getSummaries } from "@features/summaries/api/summaries";
 import { Summary } from "@features/summaries/types";
 import { useQuery } from "@tanstack/react-query";
-import { Table } from "react-bootstrap";
+import { Table, Alert, Card } from "react-bootstrap";
+import { Loading } from "@features/ui/loading";
 
 function SummariesPage() {
-  const { data, isError, isFetched, isLoading} = useQuery(["summaries"], getSummaries);
+  const { data, isError, isLoading } = useQuery<Summary[]>({
+    queryKey: ['summaries'],
+    queryFn: getSummaries,
+  });
+  
   const summaries = data || [];
 
   function generateSummaryTable() {
@@ -33,41 +38,68 @@ function SummariesPage() {
   }
   
   return (
-    <>
-      <h1>Wave Summaries</h1>
-      <p>Showing the last 50 summaries from "/api/v1/locations/summary". If there are none, check the daily_summaries cron job.</p>
-      <p>For more information on the data, see <a href="https://www.ndbc.noaa.gov/measdes.shtml" target="_blank">NOAA's National Data Buoy Center</a>.</p>
-      {data?.length && !isError ? 
-        (
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>id</th>
-                <th>location_id</th>
-                <th>noaa timestamp</th>
-                <th>date created</th>
-                <th>wvht</th>
-                <th>precipitation</th>
-                <th>wind</th>
-                <th>gust</th>
-                <th>pp</th>
-                <th>water temp</th>
-                <th>swell</th>
-                <th>period</th>
-                <th>dir</th>
-                <th>ww</th>
-                <th>ww period</th>
-                <th>ww direction</th>
-              </tr>
-            </thead>
-            <tbody>
-              {summaries && isFetched && !isLoading && !isError && generateSummaryTable()}
-            </tbody>
-          </Table>    
-        ) : (
-          <p>No summaries found.</p>
-        )}
-    </>
+    <div className="py-4">
+      <h1 className="mb-4">Wave Summaries</h1>
+      
+      <Card>
+        <Card.Body>
+          <Card.Text className="text-muted mb-3">
+            Showing the last 50 summaries from the API. For more information on the data, see{' '}
+            <a href="https://www.ndbc.noaa.gov/measdes.shtml" target="_blank" rel="noopener noreferrer">
+              NOAA's National Data Buoy Center
+            </a>.
+          </Card.Text>
+          
+          {isLoading && <Loading text="Loading summaries..." />}
+          
+          {isError && (
+            <Alert variant="danger">
+              <Alert.Heading>Error Loading Summaries</Alert.Heading>
+              <p>There was an error loading the wave summaries. Please try refreshing the page.</p>
+            </Alert>
+          )}
+          
+          {!isLoading && !isError && (
+            <>
+              {summaries.length > 0 ? (
+                <div className="table-responsive">
+                  <Table striped bordered hover>
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Location ID</th>
+                        <th>NOAA Timestamp</th>
+                        <th>Date Created</th>
+                        <th>Wave Height</th>
+                        <th>Precipitation</th>
+                        <th>Wind</th>
+                        <th>Gust</th>
+                        <th>Peak Period</th>
+                        <th>Water Temp</th>
+                        <th>Swell</th>
+                        <th>Period</th>
+                        <th>Direction</th>
+                        <th>Wind Wave</th>
+                        <th>WW Period</th>
+                        <th>WW Direction</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {generateSummaryTable()}
+                    </tbody>
+                  </Table>
+                </div>
+              ) : (
+                <Alert variant="info">
+                  <Alert.Heading>No Summaries Found</Alert.Heading>
+                  <p>No wave summaries are currently available. Check the daily_summaries cron job if this persists.</p>
+                </Alert>
+              )}
+            </>
+          )}
+        </Card.Body>
+      </Card>
+    </div>
   )
 }
 

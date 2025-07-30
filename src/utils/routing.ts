@@ -10,11 +10,11 @@ export const APP_ROUTES = {
   SUMMARIES: "/summaries",
 }
 
-// Use with base url environment variable to make a request url
+// API routes - all endpoints are now under the v1 API
 export const API_ROUTES = {
   LOGIN: "/login",
   GET_USER: "/users/me",
-  LOCATIONS: "/api/v1/locations",
-  USERS: "/api/v1/users",
-  SUMMARIES: "/api/v1/locations/summary",
+  LOCATIONS: "/locations",
+  USERS: "/users",
+  SUMMARIES: "/locations/summary",
 }
