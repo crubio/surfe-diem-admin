@@ -12,6 +12,15 @@ export interface Location {
   date_updated: string
 }
 
+export interface CreateLocationRequest {
+  name: string,
+  url: string,
+  location_id: string,
+  active: string, // API expects string "true"/"false"
+  description?: string,
+  location?: string
+}
+
 export interface Locations {
   locations: Location[]
 }
