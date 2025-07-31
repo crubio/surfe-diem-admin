@@ -1,20 +1,30 @@
 import { getLocations } from "@features/locations/api/locations";
 import { LocationsList } from "@features/locations/components/locations-list";
 import { CreateLocationForm } from "@features/locations/components/create-location-form";
+import { LocationsFilter } from "@features/locations/components/locations-filter";
 import { Loading } from "@features/ui/loading";
 import { Location } from "@features/locations/types";
+import { filterLocationsByName } from "@features/locations/utils/filter-locations";
 import { useQuery } from "@tanstack/react-query";
 import { Button, Stack, Alert, Card } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 function LocationsPage() {
   const [showCreateForm, setShowCreateForm] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  
   const { data, isLoading, isError } = useQuery<Location[]>({
     queryKey: ['locations'],
     queryFn: getLocations,
   });
   
-  const locations = data || [];
+  // This can be a long list, so we memoize it
+  const locations = useMemo(() => data || [], [data]);
+  
+  // Filter locations based on search term
+  const filteredLocations = useMemo(() => {
+    return filterLocationsByName(locations, searchTerm);
+  }, [locations, searchTerm]);
 
   const handleCreateSuccess = () => {
     setShowCreateForm(false);
@@ -75,7 +85,23 @@ function LocationsPage() {
                   <p>There are currently no locations in the database. Add your first location to get started.</p>
                 </Alert>
               ) : (
-                <LocationsList locations={locations} />
+                <>
+                  <LocationsFilter
+                    searchTerm={searchTerm}
+                    onSearchChange={setSearchTerm}
+                    totalCount={locations.length}
+                    filteredCount={filteredLocations.length}
+                  />
+                  
+                  {filteredLocations.length === 0 && searchTerm ? (
+                    <Alert variant="warning">
+                      <Alert.Heading>No Matching Locations</Alert.Heading>
+                      <p>No locations match your search term "{searchTerm}". Try a different search or clear the filter.</p>
+                    </Alert>
+                  ) : (
+                    <LocationsList locations={filteredLocations} />
+                  )}
+                </>
               )}
             </>
           )}

@@ -11,7 +11,7 @@ function SiteHeader() {
     return (
         <Navbar expand="lg" className="bg-primary bg-gradient text-white shadow-sm">
             <Container>
-                <Navbar.Brand className="text-white fw-bold">
+                <Navbar.Brand className="text-white fw-bold me-4 d-flex align-items-center">
                     <i className="bi bi-water me-2"></i>
                     <Nav.Link href={APP_ROUTES.HOME} className="text-white p-0">
                         Surfe Diem Admin
@@ -21,23 +21,23 @@ function SiteHeader() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="border-white" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href={APP_ROUTES.HOME} className="text-white">
+                        <Nav.Link href={APP_ROUTES.HOME} className="text-white d-flex align-items-center">
                             <i className="bi bi-house me-1"></i>
                             Home
                         </Nav.Link>
-                        <Nav.Link href="/dashboard" className="text-white">
+                        <Nav.Link href="/dashboard" className="text-white d-flex align-items-center">
                             <i className="bi bi-speedometer2 me-1"></i>
                             Dashboard
                         </Nav.Link>
-                        <Nav.Link href={APP_ROUTES.LOCATIONS} className="text-white">
+                        <Nav.Link href={APP_ROUTES.LOCATIONS} className="text-white d-flex align-items-center">
                             <i className="bi bi-geo-alt me-1"></i>
                             Locations
                         </Nav.Link>
-                        <Nav.Link href={APP_ROUTES.SUMMARIES} className="text-white">
+                        <Nav.Link href={APP_ROUTES.SUMMARIES} className="text-white d-flex align-items-center">
                             <i className="bi bi-graph-up me-1"></i>
                             Wave Summaries
                         </Nav.Link>
-                        <Nav.Link href={APP_ROUTES.USERS} className="text-white">
+                        <Nav.Link href={APP_ROUTES.USERS} className="text-white d-flex align-items-center">
                             <i className="bi bi-people me-1"></i>
                             Users
                         </Nav.Link>
@@ -45,12 +45,12 @@ function SiteHeader() {
                     
                     <Nav>
                         {user ? (
-                            <Nav.Link className="text-white">
+                            <Nav.Link className="text-white d-flex align-items-center">
                                 <i className="bi bi-person-circle me-1"></i>
                                 {user.email}
                             </Nav.Link>
                         ) : (
-                            <Nav.Link href={APP_ROUTES.LOGIN} className="text-white">
+                            <Nav.Link href={APP_ROUTES.LOGIN} className="text-white d-flex align-items-center">
                                 <i className="bi bi-box-arrow-in-right me-1"></i>
                                 Login
                             </Nav.Link>
