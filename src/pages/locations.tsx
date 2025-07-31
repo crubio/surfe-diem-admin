@@ -1,17 +1,28 @@
 import { getLocations } from "@features/locations/api/locations";
 import { LocationsList } from "@features/locations/components/locations-list";
+import { CreateLocationForm } from "@features/locations/components/create-location-form";
 import { Loading } from "@features/ui/loading";
 import { Location } from "@features/locations/types";
 import { useQuery } from "@tanstack/react-query";
 import { Button, Stack, Alert, Card } from "react-bootstrap";
+import { useState } from "react";
 
 function LocationsPage() {
+  const [showCreateForm, setShowCreateForm] = useState(false);
   const { data, isLoading, isError } = useQuery<Location[]>({
     queryKey: ['locations'],
     queryFn: getLocations,
   });
   
   const locations = data || [];
+
+  const handleCreateSuccess = () => {
+    setShowCreateForm(false);
+  };
+
+  const handleCancelCreate = () => {
+    setShowCreateForm(false);
+  };
 
   return (
     <div className="py-4">
@@ -21,12 +32,25 @@ function LocationsPage() {
         </div>
         <div className="p-2 ms-auto"></div>
         <div className="p-2">
-          <Button variant="primary">
+          <Button 
+            variant="primary"
+            onClick={() => setShowCreateForm(true)}
+            disabled={showCreateForm}
+          >
             <i className="bi bi-plus-circle me-2"></i>
             Add Location
           </Button>
         </div>
       </Stack>
+      
+      {showCreateForm && (
+        <div className="mb-4">
+          <CreateLocationForm 
+            onSuccess={handleCreateSuccess}
+            onCancel={handleCancelCreate}
+          />
+        </div>
+      )}
       
       <Card>
         <Card.Body>
