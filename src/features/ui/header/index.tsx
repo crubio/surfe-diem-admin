@@ -33,6 +33,10 @@ function SiteHeader() {
                             <i className="bi bi-geo-alt me-1"></i>
                             Locations
                         </Nav.Link>
+                        <Nav.Link href={APP_ROUTES.TIDE_STATIONS} className="text-white d-flex align-items-center">
+                            <i className="bi bi-water me-1"></i>
+                            Tide Stations
+                        </Nav.Link>
                         <Nav.Link href={APP_ROUTES.SUMMARIES} className="text-white d-flex align-items-center">
                             <i className="bi bi-graph-up me-1"></i>
                             Wave Summaries
