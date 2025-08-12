@@ -106,7 +106,7 @@ const TideStationsPage: React.FC = () => {
 
   const handleConfirmDelete = () => {
     if (stationToDelete) {
-      deleteMutation.mutate(stationToDelete.id.toString());
+      deleteMutation.mutate(stationToDelete.station_id.toString());
     }
   };
 

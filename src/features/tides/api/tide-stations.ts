@@ -18,6 +18,6 @@ export const updateTideStation = (id: string, params: UpdateTideStationRequest):
   return axios.put(`${API_ROUTES.TIDE_STATIONS}/${id}`, params);
 }
 
-export const deleteTideStation = (id: string): Promise<void> => {
-  return axios.delete(`${API_ROUTES.TIDE_STATIONS}/${id}`);
+export const deleteTideStation = (stationId: string): Promise<void> => {
+  return axios.delete(`${API_ROUTES.TIDE_STATIONS}/${stationId}`);
 } 
