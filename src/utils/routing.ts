@@ -8,6 +8,7 @@ export const APP_ROUTES = {
   USERS: "/users",
   LOCATIONS: "/locations",
   SUMMARIES: "/summaries",
+  TIDE_STATIONS: "/tide-stations",
 }
 
 // API routes - all endpoints are now under the v1 API
@@ -17,4 +18,5 @@ export const API_ROUTES = {
   LOCATIONS: "/locations",
   USERS: "/users",
   SUMMARIES: "/locations/summary",
+  TIDE_STATIONS: "/tides/stations",
 }

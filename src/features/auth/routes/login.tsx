@@ -12,6 +12,7 @@ export const Login = () => {
   function onSuccess() {
     notify();
     navigate('/');
+    history.go(0)
   }
 
   return (

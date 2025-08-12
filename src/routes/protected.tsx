@@ -6,6 +6,7 @@ import { Login } from "@features/auth/routes/login";
 import SummariesPage from "pages/summary";
 import HomePage from "pages/home";
 import Dashboard from "pages/dashboard";
+import TideStationsPage from "pages/tide-stations";
 
 export const protectedRoutes = [
   {
@@ -33,6 +34,11 @@ export const protectedRoutes = [
       {
         path: "summaries/",
         element: <SummariesPage />,
+        errorEleeent: <NotFoundCard />,
+      },
+      {
+        path: "tide-stations/",
+        element: <TideStationsPage />,
         errorEleeent: <NotFoundCard />,
       },
       {
