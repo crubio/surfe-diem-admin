@@ -24,3 +24,13 @@ export interface CreateLocationRequest {
 export interface Locations {
   locations: Location[]
 }
+
+export interface Spot {
+  id: number,
+  name: string,
+  timezeon: string, 
+  latitude: number,
+  longitude: number,
+  subregion_name: string,
+  slug: string
+}
