@@ -7,6 +7,7 @@ import SummariesPage from "pages/summary";
 import HomePage from "pages/home";
 import Dashboard from "pages/dashboard";
 import TideStationsPage from "pages/tide-stations";
+import { SiteToolsPage } from "pages/tools";
 
 export const protectedRoutes = [
   {
@@ -39,6 +40,11 @@ export const protectedRoutes = [
       {
         path: "tide-stations/",
         element: <TideStationsPage />,
+        errorEleeent: <NotFoundCard />,
+      },
+      {
+        path: "site-tools/",
+        element: <SiteToolsPage />,
         errorEleeent: <NotFoundCard />,
       },
       {

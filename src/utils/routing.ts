@@ -19,4 +19,5 @@ export const API_ROUTES = {
   USERS: "/users",
   SUMMARIES: "/locations/summary",
   TIDE_STATIONS: "/tides/stations",
+  SPOTS: "/spots"
 }
