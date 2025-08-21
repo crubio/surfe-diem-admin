@@ -37,9 +37,9 @@ function SiteHeader() {
                             <i className="bi bi-water me-1"></i>
                             Tide Stations
                         </Nav.Link>
-                        <Nav.Link href={APP_ROUTES.SUMMARIES} className="text-white d-flex align-items-center">
-                            <i className="bi bi-graph-up me-1"></i>
-                            Wave Summaries
+                        <Nav.Link href={APP_ROUTES.TOOLS} className="text-white d-flex align-items-center">
+                            <i className="bi bi-wrench me-1"></i>
+                            Tools
                         </Nav.Link>
                         <Nav.Link href={APP_ROUTES.USERS} className="text-white d-flex align-items-center">
                             <i className="bi bi-people me-1"></i>
