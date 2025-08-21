@@ -1,3 +1,4 @@
+import QRSpotGen from "@features/tools/qr-spot-gen"
 import SiteMapGenerator from "@features/tools/sitemap-gen"
 import { Stack } from "react-bootstrap"
 
@@ -19,7 +20,11 @@ export const SiteToolsPage = () => {
     <div className="container-fluid">
       <div className="row">
         <div className="col-12">
-          <SiteMapGenerator />
+          <div className="mb-4">
+            <SiteMapGenerator />
+          </div>
+          
+          <QRSpotGen />
         </div>
       </div>
     </div>
