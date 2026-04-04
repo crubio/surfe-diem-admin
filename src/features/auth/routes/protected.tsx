@@ -8,7 +8,7 @@ const App = () => {
     <>
       <SiteHeader />
       <Container>
-        {MakeBreadCrumbs()}
+        {/* {MakeBreadCrumbs()} */}
         <Outlet />
       </Container>
     </>
