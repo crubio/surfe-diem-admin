@@ -41,10 +41,11 @@ function SiteHeader() {
                             <i className="bi bi-wrench me-1"></i>
                             Tools
                         </Nav.Link>
-                        <Nav.Link href={APP_ROUTES.USERS} className="text-white d-flex align-items-center">
-                            <i className="bi bi-people me-1"></i>
-                            Users
+                        <Nav.Link href={APP_ROUTES.METRICS} className="text-white d-flex align-items-center">
+                            <i className="bi bi-activity me-1"></i>
+                            Metrics
                         </Nav.Link>
+
                     </Nav>
                     
                     <Nav>
