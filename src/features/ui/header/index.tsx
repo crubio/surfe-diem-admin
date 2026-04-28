@@ -45,6 +45,10 @@ function SiteHeader() {
                             <i className="bi bi-activity me-1"></i>
                             Metrics
                         </Nav.Link>
+                        <Nav.Link href={APP_ROUTES.CACHE} className="text-white d-flex align-items-center">
+                            <i className="bi bi-lightning me-1"></i>
+                            Cache
+                        </Nav.Link>
 
                     </Nav>
                     

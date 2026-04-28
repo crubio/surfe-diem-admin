@@ -9,6 +9,7 @@ import Dashboard from "pages/dashboard";
 import TideStationsPage from "pages/tide-stations";
 import { SiteToolsPage } from "pages/tools";
 import Metrics from "pages/metrics";
+import CachePage from "pages/cache";
 
 export const protectedRoutes = [
   {
@@ -51,6 +52,11 @@ export const protectedRoutes = [
       {
         path: "metrics/",
         element: <Metrics />,
+        errorElement: <NotFoundCard />,
+      },
+      {
+        path: "cache/",
+        element: <CachePage />,
         errorElement: <NotFoundCard />,
       },
       {
