@@ -1,18 +1,14 @@
 
-import { useNavigate } from 'react-router-dom';
 import { LoginForm } from '../components/login-form';
 import { toast } from 'react-toastify';
 import { Card } from 'react-bootstrap';
 
 export const Login = () => {
-  const navigate = useNavigate();
-  
   const notify = () => toast('Login successful!');
 
   function onSuccess() {
     notify();
-    navigate('/');
-    history.go(0)
+    window.location.assign('/');
   }
 
   return (

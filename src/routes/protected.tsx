@@ -1,8 +1,8 @@
+import { Navigate } from "react-router-dom";
 import LocationsPage from "pages/locations";
 import Users from "pages/users";
 import NotFoundCard from "@features/ui/cards/not-found";
 import ProtectedApp from "@features/auth/routes/protected";
-import { Login } from "@features/auth/routes/login";
 import SummariesPage from "pages/summary";
 import HomePage from "pages/home";
 import Dashboard from "pages/dashboard";
@@ -55,8 +55,7 @@ export const protectedRoutes = [
       },
       {
         path: '/login',
-        element: <Login />,
-        ErrorElement: <div>404 Not Found</div>,
+        element: <Navigate to="/" replace />,
       },
     ],
   }
