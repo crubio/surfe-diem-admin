@@ -10,6 +10,7 @@ import TideStationsPage from "pages/tide-stations";
 import { SiteToolsPage } from "pages/tools";
 import Metrics from "pages/metrics";
 import CachePage from "pages/cache";
+import SpotRatingsPage from "pages/spot-ratings";
 
 export const protectedRoutes = [
   {
@@ -57,6 +58,11 @@ export const protectedRoutes = [
       {
         path: "cache/",
         element: <CachePage />,
+        errorElement: <NotFoundCard />,
+      },
+      {
+        path: "spot-ratings/",
+        element: <SpotRatingsPage />,
         errorElement: <NotFoundCard />,
       },
       {

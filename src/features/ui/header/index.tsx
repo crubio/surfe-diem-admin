@@ -49,6 +49,10 @@ function SiteHeader() {
                             <i className="bi bi-lightning me-1"></i>
                             Cache
                         </Nav.Link>
+                        <Nav.Link href={APP_ROUTES.SPOT_RATINGS} className="text-white d-flex align-items-center">
+                            <i className="bi bi-star-half me-1"></i>
+                            Ratings
+                        </Nav.Link>
 
                     </Nav>
                     
