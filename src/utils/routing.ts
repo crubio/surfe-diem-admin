@@ -26,6 +26,7 @@ export const API_ROUTES = {
   SPOTS: "/spots",
   RATINGS_SUMMARY: "/spots/ratings/summary",
   METRICS: "/metrics/summary",
+  METRICS_UPSTREAM: "/metrics/upstream",
   HEALTH: "/health",
   HEALTH_SERVICES: "/health/services",
   CACHE_STATUS: "/cache/status",
